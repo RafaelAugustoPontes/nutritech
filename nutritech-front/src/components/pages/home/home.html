@@ -1,0 +1,27 @@
+<div>
+	<app-loading :isLoading="isLoading"></app-loading>
+	<div class="mb-3">
+		<b-button block pill variant="primary">Gerar dieta</b-button>
+	</div>
+	<b-card-group deck class="mb-2 ">
+		<b-card header-tag="header" title="IMC atual">
+			<h2 class="imc-number">{{imc.valueFormatted}}</h2>
+			<p class="imc-status-bad">{{imc.description}}</p>
+		</b-card>
+		<b-card header-tag="header" title="Mensagem do dia">
+			<blockquote class="blockquote text-right">
+				<p class="mb-0">
+					{{motivationalQuote.message}}
+				</p>
+				<footer class="blockquote-footer">
+					<cite title="Source Title">{{motivationalQuote.author}}</cite>
+				</footer>
+			</blockquote>
+		</b-card>
+	</b-card-group>
+	<b-card-group deck>
+		<b-card header-tag="header" title="Minha evolução">
+			<apexchart type="line" :options="options" :series="series"></apexchart>
+		</b-card>
+	</b-card-group>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+	<app-loading :isLoading="isLoading"></app-loading>
+	<div>
+		<b-card title="Login" bg-variant="light">
+			<b-card-text>
+				<b-form>
+					<b-form-group id="input-group-1" label="Email:" label-for="input-1">
+						<b-form-input
+							id="input-1"
+							v-model="form.username"
+							type="email"
+							required
+							placeholder="usuario@dominio.com.br"
+						></b-form-input>
+					</b-form-group>
+					<b-form-group id="input-group-2" label="Email:" label-for="input-2">
+						<b-form-input
+							id="input-2"
+							v-model="form.password"
+							type="password"
+							required
+						></b-form-input>
+					</b-form-group>
+				</b-form>
+			</b-card-text>
+			<b-button
+				block
+				pill
+				type="submit"
+				variant="primary"
+				@click.stop.prevent="onSubmit"
+				>Entrar</b-button
+			>
+			<b-button block pill variant="secondary" @click="goToSignUp()">
+				Cadastrar
+			</b-button>
+		</b-card>
+	</div>
+</div>

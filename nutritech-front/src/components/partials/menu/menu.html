@@ -1,0 +1,24 @@
+<div>
+	<b-row>
+		<b-col cols="12">
+			<b-navbar class="header" toggleable="lg" type="dark" variant="dark">
+				<b-navbar-nav>
+					<b-nav-item>Nutritech</b-nav-item>
+					<div v-for="rota in routes" :value="rota.title" :key="rota.title">
+						<b-nav-item v-if="!rota.hidden">
+						<router-link :to="rota.path ? rota.path  :  '/'">{{rota.title}}</router-link>
+						</b-nav-item>
+					</div>
+				</b-navbar-nav>
+				<b-navbar-nav class="ml-auto">
+					<b-nav-item-dropdown right>
+					  <template slot="button-content">
+						<em>{{username}}</em>
+					  </template>
+					  <b-dropdown-item @click="logout()">Sair</b-dropdown-item>
+					</b-nav-item-dropdown>
+				  </b-navbar-nav>
+			</b-navbar>
+		</b-col>
+	</b-row>
+</div>

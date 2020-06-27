@@ -1,0 +1,61 @@
+<div>
+	<b-card title="Meu histórico de peso" bg-variant="light" class="mb-2">
+		<b-card-text>
+			<b-form>
+				<b-form-group
+					id="input-group-1"
+					label="Peso"
+					label-for="input-1"
+				>
+					<b-form-spinbutton
+						id="input-1"
+						v-model="form.value"
+						min="30"
+						max="200"
+						step="1"
+					></b-form-spinbutton>
+				</b-form-group>
+
+				<b-form-group
+					id="input-group-2"
+					label="Data da pesagem"
+					label-for="input-2"
+				>
+					<b-form-input
+						id="input-2"
+						v-model="form.date"
+						type="date"
+						required
+					></b-form-input>
+				</b-form-group>
+				<b-button block pill type="submit" class="mr-2" variant="primary"
+					>Gravar</b-button
+				>
+			</b-form>
+		</b-card-text>
+	</b-card>
+
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Peso</th>
+				<th scope="col">Data</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="dado in items" :value="dado.id" :key="dado.id">
+				<th scope="row">{{ dado.peso }}</th>
+				<th scope="row">{{ dado.dataFormatada }}</th>
+				<th scope="row">
+					<b-button
+						size="sm"
+						variant="danger"
+					>
+						Excluir
+					</b-button>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+</div>

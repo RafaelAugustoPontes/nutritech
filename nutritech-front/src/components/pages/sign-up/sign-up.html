@@ -1,0 +1,117 @@
+<div>
+	<app-loading :isLoading="isLoading"></app-loading>
+	<b-card title="Cadastro" bg-variant="light">
+		<b-card-text>
+			<b-form @submit.stop.prevent="onSubmit">
+				<b-form-group id="input-group-1" label="E-mail:" label-for="input-1">
+					<b-form-input
+						id="input-1"
+						v-model="form.email"
+						type="email"
+						required
+						placeholder="usuario@dominio.com.br"
+					></b-form-input>
+				</b-form-group>
+				<b-form-group
+					id="input-group-2"
+					label="Nome completo:"
+					label-for="input-2"
+				>
+					<b-form-input
+						id="input-2"
+						v-model="form.fullname"
+						type="text"
+						required
+						placeholder="Ex: Fulano da silva"
+					></b-form-input>
+				</b-form-group>
+
+				<b-form-group label="Data de nascimento" label-for="input-3">
+					<b-form-input
+						id="input-3"
+						type="date"
+						v-model="form.birthdate"
+						min="1920-01-01"
+						max="2015-12-31"
+						required
+					></b-form-input>
+				</b-form-group>
+
+				<b-form-group id="input-group-4" label="Senha:" label-for="input-2">
+					<b-form-input
+						id="input-4"
+						v-model="form.password"
+						type="password"
+						required
+					></b-form-input>
+				</b-form-group>
+				<b-form-group
+					id="input-group-5"
+					label="Confirmação da senha:"
+					label-for="input-2"
+					required
+				>
+					<b-form-input
+						id="input-5"
+						v-model="form.passwordConfirmation"
+						type="password"
+						required
+					></b-form-input>
+				</b-form-group>
+
+				<b-form-group id="input-group-6" label="Gênero:" label-for="input-6">
+					<b-form-select
+						id="input-6"
+						v-model="form.gender"
+						:options="genders"
+						required
+					></b-form-select>
+				</b-form-group>
+
+				<b-form-group id="input-group-7" label="Altura" label-for="input-7">
+					<b-form-spinbutton
+						id="input-7"
+						v-model="form.height"
+						min="1"
+						max="3"
+						step="0.01"
+						required
+					></b-form-spinbutton>
+				</b-form-group>
+
+				<b-form-group id="input-group-8" label="Peso" label-for="input-8">
+					<b-form-spinbutton
+						id="input-8"
+						v-model="form.weight"
+						min="30"
+						max="200"
+						step="1"
+						required
+					></b-form-spinbutton>
+				</b-form-group>
+
+				<b-form-group label="Vegetariano">
+					<b-form-radio
+						v-model="form.isVegetarian"
+						name="some-radios"
+						value="true"
+						>Sim</b-form-radio
+					>
+					<b-form-radio
+						v-model="form.isVegetarian"
+						name="some-radios"
+						value="false"
+						>Não</b-form-radio
+					>
+				</b-form-group>
+
+				<b-button block pill type="submit" class="mr-2" variant="primary"
+					>Confirmar</b-button
+				>
+				<b-button block pill variant="secondary" @click="goToLogin()"
+					>Voltar</b-button
+				>
+			</b-form>
+		</b-card-text>
+	</b-card>
+</div>
