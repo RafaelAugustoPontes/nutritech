@@ -1,27 +1,71 @@
+import AppLoading from "../../partials/app-loading/app-loading.vue"
+
 export default {
 	data() {
 		return {
+			weights: [],
 			form: {
-				value: 100,
-                date: "",
+				value: 60,
+				date: "",
 			},
-			items: [
-				{
-					id: 1,
-					peso: 100,
-					dataFormatada: "01/06/2020",
-				},
-				{
-					id: 2,
-					peso: 92,
-					dataFormatada: "10/06/2020",
-				},
-				{
-					id: 3,
-					peso: 88,
-					dataFormatada: "20/06/2020",
-				},
-			],
+
+			isLoading: false,
 		}
+	},
+	created() {
+		this.getWeights()
+	},
+
+	methods: {
+		excluir(id) {
+			this.isLoading = true
+			this.$http
+				.delete(process.env.VUE_APP_BASE_URI + `weigths/${id}`)
+				.then(
+					() => {
+						this.isLoading = false
+						this.getWeights()
+					},
+					() => {
+						this.isLoading = false
+					},
+				)
+		},
+
+		getWeights() {
+			this.isLoading = true
+			this.$http
+				.get(process.env.VUE_APP_BASE_URI + "weigths")
+				.then((resposta) => resposta.json())
+				.then(
+					(response) => {
+						this.weights = response
+						this.isLoading = false
+					},
+					() => {
+						this.isLoading = false
+					},
+				)
+		},
+
+		cadastrar(event) {
+			event.preventDefault();
+			this.isLoading = true
+			this.$http
+				.post(process.env.VUE_APP_BASE_URI + "weigths", this.form)
+				.then(
+					() => {
+						this.isLoading = false
+						this.getWeights()
+					},
+					() => {
+						this.isLoading = false
+					},
+				)
+		},
+	},
+
+	components: {
+		"app-loading": AppLoading,
 	},
 }

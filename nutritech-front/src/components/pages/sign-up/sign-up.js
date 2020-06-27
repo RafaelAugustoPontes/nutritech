@@ -28,8 +28,8 @@ export default {
 					this.isLoading = false
 					this.$router.push("/login")
 				},
-				(erro) => {
-					this.$toast.error(erro)
+				() => {
+					this.$toast.error("Erro ao cadastrar o usuario")
 					this.isLoading = false
 				},
 			)

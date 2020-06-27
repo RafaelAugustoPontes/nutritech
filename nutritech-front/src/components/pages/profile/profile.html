@@ -1,23 +1,24 @@
 <div>
+	<app-loading :isLoading="isLoading"></app-loading>
 	<b-card no-body bg-variant="light" header="Meu perfil">
 		<b-card-text class="mt-2 mb-2">
 			<span class="label font-weight-bold">Nome completo: </span>
-            <span id="fullname" class="label">Alessandro</span>
+            <span id="fullname" class="label">{{user.fullname}}</span>
             <br>
 			<span class="label font-weight-bold">E-mail: </span>
-            <span id="email" class="label">alessandro0014@hotmail.com</span>
+            <span id="email" class="label">{{user.email}}</span>
             <br>
 			<span class="label font-weight-bold">Data de nascimento: </span>
-			<span id="birthdate" class="label">31/05/2020</span>
+			<span id="birthdate" class="label">{{user.birthdate}}</span>
             <br>
 			<span class="label font-weight-bold">Gênero: </span>
-            <span id="gender" class="label">MASCULINO</span>
+            <span id="gender" class="label">{{user.gender}}</span>
             <br>
 			<span class="label font-weight-bold">Altura: </span>
-			<span id="height" class="label">1.78</span>
+			<span id="height" class="label">{{user.height}}</span>
             <br>
 			<span class="label font-weight-bold">Vegetariano: </span>
-			<span id="height" class="label">Não</span>
+			<span id="height" class="label">{{user.isVegetarianDescription}}</span>
 		</b-card-text>
 	</b-card>
 </div>
