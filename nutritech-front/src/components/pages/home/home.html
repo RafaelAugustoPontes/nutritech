@@ -1,7 +1,7 @@
 <div>
 	<app-loading :isLoading="isLoading"></app-loading>
 	<div class="mb-3">
-		<b-button block pill variant="primary">Gerar dieta</b-button>
+		<b-button block pill variant="primary" @click="generateDiet()">Gerar dieta</b-button>
 	</div>
 	<b-card-group deck class="mb-2 ">
 		<b-card header-tag="header" title="IMC atual">

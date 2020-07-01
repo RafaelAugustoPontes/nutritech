@@ -1,6 +1,6 @@
 import AppLoading from "../../partials/app-loading/app-loading.vue"
 
-export default{
+export default {
     data() {
         return{
             user:{

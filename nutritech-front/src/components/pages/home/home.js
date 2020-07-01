@@ -5,17 +5,17 @@ export default {
 		return {
 			options: {},
 			series: [],
-      isLoading: false,
-      motivationalQuote : {},
-      imc : {}
+			isLoading: false,
+			motivationalQuote: {},
+			imc: {},
 		}
 	},
 
 	created() {
 		this.isLoading = true
-    this.generateChart()
-    this.getMotivationalQuote()
-    this.getImc()
+		this.generateChart()
+		this.getMotivationalQuote()
+		this.getImc()
 	},
 
 	methods: {
@@ -53,38 +53,55 @@ export default {
 						this.isLoading = false
 					},
 				)
-    },
-    
-    getMotivationalQuote(){
-      this.$http
-      .get(process.env.VUE_APP_BASE_URI + "motivational-quotes")
-      .then((resposta) => resposta.json())
-      .then(
-        (motivationalQuote) => {
-          this.motivationalQuote = motivationalQuote;
-        },
-        () => {
-          this.$toast.error("Erro ao buscar a frase do dia")
-          this.isLoading = false
-        },
-      )
-    },
+		},
 
-    getImc(){
-      this.$http
-      .get(process.env.VUE_APP_BASE_URI + "users/imc")
-      .then((resposta) => resposta.json())
-      .then(
-        (imc) => {
-          this.imc = imc;
-        },
-        () => {
-          this.$toast.error("Erro ao buscar a frase do dia")
-          this.isLoading = false
-        },
-      )
-    }
+		getMotivationalQuote() {
+			this.$http
+				.get(process.env.VUE_APP_BASE_URI + "motivational-quotes")
+				.then((resposta) => resposta.json())
+				.then(
+					(motivationalQuote) => {
+						this.motivationalQuote = motivationalQuote
+					},
+					() => {
+						this.$toast.error("Erro ao buscar a frase do dia")
+						this.isLoading = false
+					},
+				)
+		},
 
+		getImc() {
+			this.$http
+				.get(process.env.VUE_APP_BASE_URI + "users/imc")
+				.then((resposta) => resposta.json())
+				.then(
+					(imc) => {
+						this.imc = imc
+					},
+					() => {
+						this.$toast.error("Erro ao buscar a frase do dia")
+						this.isLoading = false
+					},
+				)
+		},
+
+		generateDiet() {
+			this.$http
+				.get(process.env.VUE_APP_BASE_URI + "diets")
+				.then((resposta) => resposta.json())
+				.then(
+					(diet) => {
+						window.open(
+							diet.url,
+							"_blank", // <- This is what makes it open in a new window.
+						)
+					},
+					() => {
+						this.$toast.error("Erro ao buscar a dieta")
+						this.isLoading = false
+					},
+				)
+		},
 	},
 
 	components: {

@@ -2,6 +2,7 @@ package br.com.nutritech.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -48,6 +49,11 @@ public class User implements UserDetails {
 
 	@OneToMany(mappedBy = "user")
 	private Set<UserDiet> userDiets;
+
+	public Integer getIdade() {
+		Period diff = Period.between(birthdate, LocalDate.now());
+		return diff.getYears();
+	}
 
 	public Integer getId() {
 		return id;
